@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://www.igeeksblog.com/wp-content/uploads/2021/10/How-to-use-the-Zoom-app-on-iPhone-and-iPad.jpg') no-repeat center center;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 370px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 2); /* Slight transparency for the background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 12px;
+            padding-left: 50px;
+            padding-right: 50px; 
+            margin-top: 150px;   
+           }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"], input[type="password"], input[type="email"], input[type="tel"], input[type="date"],
+        select, textarea, input[type="radio"], input[type="checkbox"], input[type="range"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        .success {
+            color: green;
+            font-size: 14px;
+        }
+
+        .form-group small {
+            display: block;
+            color: #999;
+        }
+
+        .checkbox-group, .radio-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .checkbox-group label, .radio-group label {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Registration Form</h2>
+    <form id="registrationForm" onsubmit="return validateForm()">
+        <!-- Full Name -->
+        <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <small>Enter a valid email address</small>
+            <div id="emailError" class="error"></div>
+        </div>
+
+        <!-- Mobile Number -->
+        <div class="form-group">
+            <label for="mobile">Mobile Number:</label>
+            <input type="tel" id="mobile" name="mobile" pattern="^\d{10}$" required>
+            <small>Enter a 10-digit mobile number</small>
+            <div id="mobileError" class="error"></div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <small>Password must be at least 6 characters long</small>
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+        </div>
+
+        <!-- Gender (Radio Buttons) -->
+        <div class="form-group radio-group">
+            <label>Gender:</label>
+            <label>
+                <input type="radio" name="gender" value="male" required> Male
+            </label>
+            <label>
+                <input type="radio" name="gender" value="female" required> Female
+            </label>
+        </div>
+
+        <!-- Address -->
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="2" required></textarea>
+            <small>Enter your full address</small>
+        </div>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Register">
+    </form>
+
+    <div id="formSuccess" class="success"></div>
+</div>
+
+<script>
+    function validateForm() {
+        let email = document.getElementById('email').value;
+        let mobile = document.getElementById('mobile').value;
+        let emailError = document.getElementById('emailError');
+        let mobileError = document.getElementById('mobileError');
+        let formSuccess = document.getElementById('formSuccess');
+
+        let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        let mobilePattern = /^\d{10}$/;
+
+        // Reset previous error messages
+        emailError.textContent = '';
+        mobileError.textContent = '';
+        formSuccess.textContent = '';
+
+        let isValid = true;
+
+        // Email validation
+        if (!emailPattern.test(email)) {
+            emailError.textContent = "Please enter a valid email address.";
+            isValid = false;
+        }
+
+        // Mobile validation
+        if (!mobilePattern.test(mobile)) {
+            mobileError.textContent = "Please enter a 10-digit mobile number.";
+            isValid = false;
+        }
+
+        if (isValid) {
+            formSuccess.textContent = "Form submitted successfully!";
+        }
+
+        return isValid;
+    }
+</script>
+
+</body>
+</html>

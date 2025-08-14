@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON and Crypto Operations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h2>JSON and Crypto Operations</h2>
+
+    <!-- Convert JSON text to JavaScript Object -->
+    <h3>1. Convert JSON Text to JavaScript Object</h3>
+    <textarea id="jsonText" placeholder='{"name":"John", "age":30, "city":"New York"}'></textarea><br>
+    <button onclick="convertJsonToObject()">Convert to Object</button>
+    <pre id="jsonObjectOutput"></pre>
+
+    <!-- Convert JSON to Date -->
+    <h3>2. Convert JSON Date String to Date</h3>
+    <textarea id="jsonDate" placeholder='{"date":"2024-12-02T10:00:00Z"}'></textarea><br>
+    <button onclick="convertJsonToDate()">Convert to Date</button>
+    <pre id="jsonDateOutput"></pre>
+
+    <!-- Convert JSON to CSV -->
+    <h3>3. Convert JSON to CSV</h3>
+    <textarea id="jsonToCsv" placeholder='[{"name":"John", "age":30}, {"name":"Jane", "age":25}]'></textarea><br>
+    <button onclick="convertJsonToCsv()">Convert to CSV</button>
+    <pre id="csvOutput"></pre>
+
+    <!-- Convert CSV to JSON -->
+    <h3>4. Convert CSV to JSON</h3>
+    <textarea id="csvInput" placeholder='name,age\nJohn,30\nJane,25'></textarea><br>
+    <button onclick="convertCsvToJson()">Convert to JSON</button>
+    <pre id="jsonFromCsvOutput"></pre>
+
+    <!-- Hash String -->
+    <h3>5. Create Hash from String</h3>
+    <input type="text" id="stringToHash" placeholder="Enter string to hash" />
+    <button onclick="createHash()">Create Hash</button>
+    <pre id="hashOutput"></pre>
+
+    <script src="script.js"></script>
+</body>
+</html>
